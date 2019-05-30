@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>ie.quest</groupId>
 	<artifactId>fredarnao</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>fredarnao</name>
 	<description>Web Developer Sample Project</description>
 

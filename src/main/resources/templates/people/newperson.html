@@ -13,13 +13,13 @@
 <script type="text/javascript">
 	$(document)
 			.ready(
-					//I configure the datepicker.
+					//Configuring the datepicker.
 					function() {
 						$("#dob").datepicker({
 							dateFormat : "dd/mm/yy",
-							showOn : "both",
+							showOn : "focus",
 							showOtherMonths : true,
-							buttonText : "Choose",
+							//buttonText : "Choose",
 							changeMonth : true,
 							changeYear : true,
 							//I suppose the maximum length of a person life is 132 years.
@@ -28,6 +28,20 @@
 							maxDate : "-16y",
 							yearRange : "-132:-16"
 						});
+						
+						$.validator.addMethod("mustBeOver16", function(value, element, params) {
+							var today = new Date();
+							var year = today.getFullYear();
+							var month = today.getMonth();
+							var day = today.getDate();							
+							var lim = new Date(year - 16, month, day);							
+							
+							var parts = value.split("/");
+							//The month is zero-based, so I have to subtract 1.
+							var val = new Date(parts[2], parts[1] - 1, parts[0]);
+							
+							return val <= lim;
+						})
 
 						//Form validation
 						$("#formNewPerson")
@@ -44,7 +58,10 @@
 												},
 												dob : {
 													required : true,
-													minlength : 10
+													dateITA: true,
+													minlength : 10,
+													mustBeOver16 : '#dob'
+													//pattern : "^((0[1-9])|([12][0-9])|(3[01]))[\/]((0[1-9])|(1[0-2]))[\/][0-9]{3}[1-9]$"
 												},
 												mobilePhone : {
 													minlength : 10,
@@ -58,11 +75,14 @@
 												ppsNumber : {
 													required : "Please, enter the PPS Number",
 													minlength : "PPS Number must be at least 8 characters",
-													pattern : "PPS Number must be seven numbers and one or two characters"
+													pattern : "PPS Number must be seven digits and one or two characters"
 												},
 												dob : {
-													required : "Please, enter de date of birth",
-													minlength : "Please, enter the date of birth in the format dd/mm/yyyy"
+													required : "Please, enter de date of birth ",
+													dateITA: "Please, enter the date of birth in the format dd/mm/yyyy ",
+													minlength : "Please, enter the date of birth in the format dd/mm/yyyy ",
+													mustBeOver16 : "Must be over 16 years old "
+													//pattern : "Please, enter the date of birth in the format dd/mm/yyyy"
 												},
 												mobilePhone : {
 													minlength : "Mobile phone must have 10 digits",

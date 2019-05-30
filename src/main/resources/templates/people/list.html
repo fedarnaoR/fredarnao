@@ -40,7 +40,8 @@
 					th:style="${rowStat.odd} ? 'background: #f0f0f2;' : 'background: #ffffff;'">
 					<td th:text="${person.name}"></td>
 					<td th:text="${#strings.toUpperCase(person.ppsNumber)}"></td>
-					<td th:text="${#dates.format(person.dob, 'dd/MM/yyyy')}"></td>
+					<td th:text="${person.dob}"></td>
+<!-- 				<td th:text="${#dates.format(person.dob, 'dd/MM/yyyy')}"></td> -->
 					<td th:text="${person.mobilePhone}"></td>
 				</tr>
 			</table>

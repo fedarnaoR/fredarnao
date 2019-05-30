@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Person {	
-	public Person(String ppsNumber, String name, Date dob, String mobilePhone, Date creationDate) {
+	public Person(String ppsNumber, String name, String dob, String mobilePhone, Date creationDate) {
 		super();
 		
 		this.ppsNumber = ppsNumber.toUpperCase();
@@ -17,11 +17,11 @@ public class Person {
 		this.creationDate = creationDate != null ? creationDate : new Date();
 	}
 	
-	public Person(String ppsNumber, String name, Date dob, String mobilePhone) {
+	public Person(String ppsNumber, String name, String dob, String mobilePhone) {
 		this(ppsNumber, name, dob, mobilePhone, null);
 	}
 		
-	public Person(String ppsNumber, String name, Date dob) {
+	public Person(String ppsNumber, String name, String dob) {
 		this(ppsNumber, name, dob, null);
 	}
 	
@@ -44,10 +44,10 @@ public class Person {
 		this.name = name;
 	}
 	
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 	
@@ -68,7 +68,7 @@ public class Person {
 	@Id
 	private String ppsNumber;
 	private String name;
-	private Date dob;
+	private String dob;
 	private String mobilePhone;
 	
 	//This one is used to order the people list. It is a hidden field (only in the database)

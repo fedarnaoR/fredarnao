@@ -28,19 +28,19 @@
 							maxDate : "-16y",
 							yearRange : "-132:-16"
 						});
-						
+					
 						$.validator.addMethod("mustBeOver16", function(value, element, params) {
 							var today = new Date();
 							var year = today.getFullYear();
 							var month = today.getMonth();
 							var day = today.getDate();							
-							var lim = new Date(year - 16, month, day);							
+							var lim = new Date(year - 16, month, day);
 							
 							var parts = value.split("/");
 							//The month is zero-based, so I have to subtract 1.
 							var val = new Date(parts[2], parts[1] - 1, parts[0]);
 							
-							return val <= lim;
+							return (val <= lim);
 						})
 
 						//Form validation

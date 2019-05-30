@@ -1,12 +1,10 @@
 package ie.quest.fredarnao;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -32,11 +30,11 @@ public class FredarnaoApplicationTests {
 		Calendar cal = Calendar.getInstance();
 		
 		cal.set(1972, 8, 9);
-		Person person1 = new Person("1234567AB", "Federico Arnao", cal.getTime(), "0889793966");
+		Person person1 = new Person("1234567AB", "Federico Arnao", "09/08/1972" /*cal.getTime()*/, "0889793966");
 		personService.newRecord(person1);
 		
 		cal.set(1978, 12, 1);
-		Person person2 = new Person("2345678BC", "Erika Najera", cal.getTime(), "088678123");
+		Person person2 = new Person("2345678BC", "Erika Najera", "01/12/1972" /*cal.getTime()*/, "088678123");
 		personService.newRecord(person2);
 		
 		Iterable<Person> peopleIter = personService.listPeople();
@@ -53,11 +51,11 @@ public class FredarnaoApplicationTests {
 		Calendar cal = Calendar.getInstance();
 		
 		cal.set(1972, 8, 9);
-		Person person1 = new Person("1234567AB", "Federico Arnao", cal.getTime(), "0889793966");
+		Person person1 = new Person("1234567AB", "Federico Arnao", "09/08/1972"/*cal.getTime()*/, "0889793966");
 		boolean res1 = personService.newRecord(person1);
 		
 		cal.set(1978, 12, 1);
-		Person person2 = new Person("1234567AB", "Erika Najera", cal.getTime(), "088678123");
+		Person person2 = new Person("1234567AB", "Erika Najera", "01/12/1978"/*cal.getTime()*/, "088678123");
 		boolean res2 = personService.newRecord(person2);
 		
 		Iterable<Person> peopleIter = personService.listPeople();

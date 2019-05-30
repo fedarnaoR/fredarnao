@@ -10,6 +10,7 @@ The present test was answered by me ([Federico Arnao Martin](https://www.linkedi
 
 You are required to develop a web appication to capture and store demographic details for individuals.
 There will be 3 pages in total:
+
 |Page|Purpose|Url|Comments|
 |---|---|---|---|
 |Landing page|It displays two links (Add a new record and List all records)|http://localhost:8080/people|Links look like buttons, but they are not.|

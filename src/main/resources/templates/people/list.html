@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.2.1/css/bootstrap.min.css">
+<script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<style>
+
+.div-center {
+	width: 640px;
+	height: 480px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+</style>
+</head>
+
+<body>
+	<div id="all" class="div-center">
+		<div id="no-content" th:if="${#lists.isEmpty(list)}" class="btn btn-warning" style="margin-bottom:20px;">No records
+			have been created</div>
+
+		<div id="div-list-people" th:if="${not #lists.isEmpty(list)}">
+			<table id="list-people" class="table table-bordered">
+				<thead class="thead-light">
+					<tr>
+						<th>Name</th>
+						<th>PPSN</th>
+						<th>DOB</th>
+						<th>Mobile Phone</th>
+					</tr>
+				</thead>
+				<tr th:each="person, rowStat:${list}"
+					th:style="${rowStat.odd} ? 'background: #f0f0f2;' : 'background: #ffffff;'">
+					<td th:text="${person.name}"></td>
+					<td th:text="${#strings.toUpperCase(person.ppsNumber)}"></td>
+					<td th:text="${#dates.format(person.dob, 'dd/MM/yyyy')}"></td>
+					<td th:text="${person.mobilePhone}"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div>
+			<form action="newperson">
+				<input type="submit" value="New person" class="btn btn-primary" />
+				<input type="button" value="Home" class="btn btn-secondary" onclick="location.href='/people';" />
+			</form>
+		</div>
+	</div>
+</body>
+</html>

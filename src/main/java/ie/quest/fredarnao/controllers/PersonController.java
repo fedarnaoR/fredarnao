@@ -18,6 +18,7 @@ import ie.quest.fredarnao.model.Person;
 public class PersonController {
 	@RequestMapping("/list")
 	public String listPeople(Model model) {
+		//I sort the list according to the creationDate field.
 		List<Person> list = new ArrayList<Person>(); 
 		service.listPeople().forEach(list::add);
 		Collections.sort(list, new Comparator<Person>() {
@@ -28,7 +29,9 @@ public class PersonController {
 			}			
 		});
 	
+		//I save the list of people in the model in order to use in the list template.
 		model.addAttribute("list", list);
+		//Going to list template.
 		return "people/list.html";
 	}
 	
@@ -39,10 +42,12 @@ public class PersonController {
 	
 	@RequestMapping("/insert") 
 	public String insert(Person person, Model model) {
+		//If I can save the record then set the variable error to false. After I get the list of people
+		//and go to list template.
 		if (service.newRecord(person)) {
 			model.addAttribute("error", false);
-			listPeople(model);
-			return "people/list.html";
+			return listPeople(model);
+		//If I can not save the record then set the variable to true and go to newperson template.
 		} else {
 			model.addAttribute("error", true);
 			return "people/newperson.html";

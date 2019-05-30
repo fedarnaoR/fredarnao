@@ -29,6 +29,7 @@ public class Person {
 		super();
 	}
 
+	//PPSN is always saved in upper case.
 	public String getPpsNumber() {
 		return ppsNumber.toUpperCase();
 	}
@@ -69,5 +70,7 @@ public class Person {
 	private String name;
 	private Date dob;
 	private String mobilePhone;
+	
+	//This one is used to order the people list. It is a hidden field (only in the database)
 	private Date creationDate;
 }

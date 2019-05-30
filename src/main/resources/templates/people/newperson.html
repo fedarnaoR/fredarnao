@@ -13,6 +13,7 @@
 <script type="text/javascript">
 	$(document)
 			.ready(
+					//I configure the datepicker.
 					function() {
 						$("#dob").datepicker({
 							dateFormat : "dd/mm/yy",
@@ -21,11 +22,14 @@
 							buttonText : "Choose",
 							changeMonth : true,
 							changeYear : true,
+							//I suppose the maximum length of a person life is 132 years.
 							minDate : "-132y",
+							//This one is a requirement: the person must be over 16 years old.
 							maxDate : "-16y",
 							yearRange : "-132:-16"
 						});
 
+						//Form validation
 						$("#formNewPerson")
 								.validate(
 										{

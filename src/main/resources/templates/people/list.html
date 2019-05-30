@@ -35,6 +35,7 @@
 						<th>Mobile Phone</th>
 					</tr>
 				</thead>
+				<!-- In order to have different styles in odd rows and even rows. -->
 				<tr th:each="person, rowStat:${list}"
 					th:style="${rowStat.odd} ? 'background: #f0f0f2;' : 'background: #ffffff;'">
 					<td th:text="${person.name}"></td>
